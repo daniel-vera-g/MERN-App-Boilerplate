@@ -31,3 +31,4 @@
 
 * Add `webpack.config.js` & `.babelrc` to the config folder for better overview.
   * customize webpack & babel path.
+* Add Docker
