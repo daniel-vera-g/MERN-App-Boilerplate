@@ -40,5 +40,3 @@
 * Add `webpack.config.js` & `.babelrc` to the config folder for better overview.
   * customize webpack & babel path.
 * Add Docker for virtualization
-* Mocha Setup for Server side testing.
-* Client side Testing
