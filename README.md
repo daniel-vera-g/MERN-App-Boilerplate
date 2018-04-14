@@ -2,6 +2,14 @@
 
 * A code boilerplate for applications using the MERN(MongoDB, Express, React and NodeJs) stack.
 
+- [MERN Boilerplate](#mern-boilerplate)
+  - [Technologies](#technologies)
+    - [Frontend](#frontend)
+    - [Backend](#backend)
+    - [Database](#database)
+  - [Installation](#installation)
+  - [TODO](#todo)
+
 ## Technologies
 
 ### Frontend
@@ -17,11 +25,11 @@
 
 * [Express](http://expressjs.com/) The Nodejs framework to serve your views to the world when they hit the server at example.com or example.com/awesome.html.
 
-#### Database
+### Database
 
 * [Mongoose](http://mongoosejs.com/) A NoSQL Database system.
 
-## Setup
+## Installation
 
 1. npm install
 2. npm build
