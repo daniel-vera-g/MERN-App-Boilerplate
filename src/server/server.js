@@ -1,5 +1,4 @@
 const express = require('express');
-
 const app = express();
 const path = require('path');
 const morgan = require('morgan');
@@ -27,7 +26,7 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));
 // })
 
 // router
-let router = require('./routes/routes.js');
+const router = require('./routes/routes.js');
 
 app.use('/', router);
 
