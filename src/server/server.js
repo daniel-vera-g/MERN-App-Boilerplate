@@ -1,4 +1,5 @@
 const express = require('express');
+
 const app = express();
 const path = require('path');
 const morgan = require('morgan');
@@ -10,6 +11,7 @@ const dotenv = require('dotenv').config({ path: '../../config/.env' });
 const debug = require('debug')('APP:server');
 const reload = require('reload');
 
+debug('Setting up Config');
 // specify view engine & static files
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../client/public/'));
