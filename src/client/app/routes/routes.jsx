@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import App from '../components/app';
 
 // Route with the Path '/' that renders 'App' component
-export const Routes = () => (
+const Routes = () => (
   <Switch>
     <Route exact path="/" component={App} />
   </Switch>

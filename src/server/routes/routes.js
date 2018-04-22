@@ -11,7 +11,7 @@ const model = require('../../models/model');
 
 // Basic route Handler
 router.get('/', (req, res) => {
-  debug('Rendering index.js');
+  debug('Rendering index.ejs');
   res.status(200).render('index');
 });
 

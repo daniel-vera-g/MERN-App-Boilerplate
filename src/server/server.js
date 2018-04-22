@@ -12,10 +12,11 @@ const debug = require('debug')('APP:server');
 const reload = require('reload');
 
 debug('Setting up Config');
-// specify view engine & static files
+// server static files
+app.use(express.static(path.join(__dirname, '../client/public')));
+// specify view engine
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '../client/public/'));
-app.use(express.static(path.join(__dirname, '../client/public/')));
+app.set('views', path.join(__dirname, '../client/public'));
 // body parser
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));

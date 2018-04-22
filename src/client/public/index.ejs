@@ -8,13 +8,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Custom styles -->
     <link type="text/html" rel="stylesheet" href="./css/styles">
+    <!-- Remove favicon error -->
+     <link rel="shortcut icon" href="">
     <title>MERN Boilerplate</title>
 </head>
 <body>
-    <h1>MERN Boilerplate</h1>
     <div id="root"></div>
+    <!-- Webpack bundle -->
+    <script src="./bundle/bundle.js"></script>
+    <!-- reload to automatically realod page after change -->
+    <script src="/reload/reload.js"></script>
 </body>
-<script type="text/html" src="../bundle/bundle"></script>
-<script src="/reload/reload.js"></script>
-
 </html>
