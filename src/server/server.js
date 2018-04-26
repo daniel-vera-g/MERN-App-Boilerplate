@@ -4,19 +4,19 @@ const app = express();
 const path = require('path');
 const morgan = require('morgan');
 // morgan logging utility
-app.use(morgan('combined'));
+app.use(morgan('tiny'))
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config({ path: '../../config/.env' });
 const debug = require('debug')('APP:server');
-const reload = require('reload');
+const reload = require('reload')
 
 debug('Setting up Config');
 // server static files
-app.use(express.static(path.join(__dirname, '../client/public')));
+app.use(express.static(path.join(__dirname, '/../client/public')));
 // specify view engine
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '../client/public'));
+app.set('views', path.join(__dirname, '/../client/public'));
 // body parser
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));
