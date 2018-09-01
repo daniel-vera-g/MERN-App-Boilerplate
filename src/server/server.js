@@ -30,6 +30,9 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));
 //     debug('App starting error:' + err);
 // })
 
+// Helmet security
+app.use(helmet());
+
 // router
 const router = require('./routes/routes.js');
 

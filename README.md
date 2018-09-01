@@ -44,3 +44,4 @@
   * customize webpack & babel path.
 * Add Docker for virtualization
 * Fix all Eslint problems
+* Helmet.js for headers 
