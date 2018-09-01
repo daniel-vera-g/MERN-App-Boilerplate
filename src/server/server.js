@@ -9,7 +9,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config({ path: '../../config/.env' });
 const debug = require('debug')('APP:server');
-const reload = require('reload')
 const helmet = require('helmet');
 const bcrypt = require('bcrypt');
 
@@ -35,7 +34,5 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));
 const router = require('./routes/routes.js');
 
 app.use('/', router);
-
-reload(app);
 
 module.exports = app;
