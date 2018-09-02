@@ -3,19 +3,18 @@ const path = require('path');
 // const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/client/app/index.jsx',
+  entry: './src/client/app/index.js',
   output: {
     path: path.join(__dirname, './src/client/public/bundle/'),
     filename: 'bundle.js',
   },
   module: {
-    loaders: [
-      {
-        test: /.jsx?$/,
-        loader: 'babel-loader',
+    rules: [
+      { 
+        test: /.js?$/,
         exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react'],
+        use: {
+          loader: 'babel-loader',
         },
       },
       {
