@@ -1,27 +1,34 @@
-const express = require('express');
-
+const express = require("express");
 const app = express();
-const path = require('path');
-const morgan = require('morgan');
+const path = require("path");
+const morgan = require("morgan");
+const createError = require("http-errors");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv").config({path: "../../config/.env"});
+const debug = require("debug")("APP:server");
+const helmet = require("helmet");
+
+const indexRouter = require("./routes/routes.js");
+
+debug("Setting up Config");
+
 // morgan logging utility
-app.use(morgan('tiny'))
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv').config({ path: '../../config/.env' });
-const debug = require('debug')('APP:server');
-const helmet = require('helmet');
-const bcrypt = require('bcrypt');
+app.use(morgan("tiny", {stream: winston.stream}));
 
+// server static files & express
+app.use(express.static(path.join(__dirname, "/../client/public")));
+app.use(cookieParser());
+app.use(express.json());
 
-debug('Setting up Config');
-// server static files
-app.use(express.static(path.join(__dirname, '/../client/public')));
 // specify view engine
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '/../client/public'));
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "/../client/public"));
+
 // body parser
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: false}));
 
 // TODO mongoose custom configuration
 // mongoose.connect(process.env.DB_CONN).then(() => {
@@ -30,12 +37,20 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));
 //     debug('App starting error:' + err);
 // })
 
-// Helmet security
-app.use(helmet());
-
 // router
-const router = require('./routes/routes.js');
+app.use("/", indexRouter);
 
-app.use('/', router);
+// error handler
+app.use((err, req, res, next) => {
+	// set locals, only providing error in development
+	res.locals.message = err.message;
+	res.locals.error = req.app.get("env") === "development" ? err : {};
+	// add this line to include winston logging
+	winston.error(`${err.status || 500} - ${err.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`);
+	// render the error page
+	res.status(err.status || 500);
+	res.render("error");
+});
+
 
 module.exports = app;
